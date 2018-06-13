@@ -10,7 +10,7 @@ import Swiper from 'react-native-swiper';
 
 const IMAGES = {
   o1: require('./imgs/1.jpg'),
-  o2: require('./imgs/1.jpg'),
+  o2: require('./imgs/2.jpg'),
   o3: require('./imgs/3.jpg'),
   o4: require('./imgs/4.jpg'),
   o5: require('./imgs/5.jpg'),
@@ -49,12 +49,6 @@ export default class App extends Component {
   };
 
   render() {
-    const swipes = map(IMAGES, (value, key) => {
-      return <View style={styles.slide1}>
-          <Image source={IMAGES[`o${value}`]} />
-        </View>
-    }
-    );
     return (
       <Swiper
         style={styles.wrapper}
@@ -64,7 +58,11 @@ export default class App extends Component {
         onIndexChanged={this.handleIndexChange}
       >
           {
-              swipes
+              map(IMAGES, (value, key) => {
+                  return <View style={styles.slide1}>
+                    <Image source={IMAGES[`o${value}`]} />
+                  </View>
+              })
           }
       </Swiper>
     );
